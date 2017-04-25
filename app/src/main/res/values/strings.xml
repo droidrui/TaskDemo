@@ -5,4 +5,7 @@
     <string name="server_error">服务器错误</string>
     <string name="network_invalid">网络不可用</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
