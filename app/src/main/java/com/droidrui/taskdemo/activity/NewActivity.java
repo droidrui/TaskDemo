@@ -3,9 +3,12 @@ package com.droidrui.taskdemo.activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.bumptech.glide.Glide;
 import com.droidrui.taskdemo.R;
+import com.droidrui.taskdemo.constant.API;
 import com.droidrui.taskdemo.fragment.NewFragment;
 import com.droidrui.taskdemo.view.Toaster;
 
@@ -16,6 +19,7 @@ public class NewActivity extends AppCompatActivity implements NewFragment.Fragme
     private static final String TAG = "fragment_task";
 
     private ProgressBar mProgressBar;
+    private ImageView mImageView;
 
     private NewFragment mNewFragment;
 
@@ -25,6 +29,8 @@ public class NewActivity extends AppCompatActivity implements NewFragment.Fragme
         setContentView(R.layout.activity_new);
 
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        mImageView = (ImageView) findViewById(R.id.iv);
+        Glide.with(this).load(API.IMAGE).into(mImageView);
 
         FragmentManager fm = getSupportFragmentManager();
         mNewFragment = (NewFragment) fm.findFragmentByTag(TAG);

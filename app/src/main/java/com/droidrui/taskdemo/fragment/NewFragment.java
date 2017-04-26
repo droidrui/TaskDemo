@@ -10,6 +10,7 @@ import android.support.annotation.WorkerThread;
 import android.support.v4.app.Fragment;
 
 import com.droidrui.taskdemo.component.Logger;
+import com.droidrui.taskdemo.component.ThreadPool;
 
 import java.io.File;
 
@@ -33,7 +34,7 @@ public class NewFragment extends Fragment {
 
         setRetainInstance(true);
 
-        new Thread(new Runnable() {
+        ThreadPool.getInstance().execute(new Runnable() {
 
             private volatile boolean mQuit;
 
@@ -60,7 +61,7 @@ public class NewFragment extends Fragment {
                     mCallback.onSuccess(new File(Environment.getExternalStorageDirectory(), "out.png"));
                 }
             }
-        }).start();
+        });
     }
 
     @Override

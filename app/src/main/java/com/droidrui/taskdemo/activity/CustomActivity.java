@@ -2,12 +2,15 @@ package com.droidrui.taskdemo.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.bumptech.glide.Glide;
 import com.droidrui.taskdemo.R;
 import com.droidrui.taskdemo.component.TaskCallback;
 import com.droidrui.taskdemo.component.TaskError;
 import com.droidrui.taskdemo.component.TaskManager;
+import com.droidrui.taskdemo.constant.API;
 import com.droidrui.taskdemo.task.CustomTask;
 import com.droidrui.taskdemo.view.Toaster;
 
@@ -16,6 +19,7 @@ import java.io.File;
 public class CustomActivity extends AppCompatActivity {
 
     private ProgressBar mProgressBar;
+    private ImageView mImageView;
     private TaskManager mTaskManager;
 
     @Override
@@ -24,6 +28,8 @@ public class CustomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_custom);
 
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        mImageView = (ImageView) findViewById(R.id.iv);
+        Glide.with(this).load(API.IMAGE).into(mImageView);
 
         mTaskManager = new TaskManager();
         mTaskManager.start(CustomTask.download()
